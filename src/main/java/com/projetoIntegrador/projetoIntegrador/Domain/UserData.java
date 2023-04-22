@@ -1,12 +1,9 @@
 package com.projetoIntegrador.projetoIntegrador.Domain;
 
 import lombok.*;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collection;
 
 
 @AllArgsConstructor
@@ -17,7 +14,7 @@ import java.util.Collection;
 @Getter
 @Setter
 @Table (name="tb_user")
-public class UserData implements UserDetails, Serializable {
+public class UserData implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,39 +28,4 @@ public class UserData implements UserDetails, Serializable {
     private String email;
     private String senha;
 
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
-    }
-
-    @Override
-    public String getPassword() {
-        return null;
-    }
-
-    @Override
-    public String getUsername() {
-        return null;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return false;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return false;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return false;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return false;
-    }
 }
