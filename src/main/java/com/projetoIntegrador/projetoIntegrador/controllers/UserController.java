@@ -1,7 +1,7 @@
 package com.projetoIntegrador.projetoIntegrador.controllers;
 
 
-import com.projetoIntegrador.projetoIntegrador.domain.UserData;
+import com.projetoIntegrador.projetoIntegrador.domain.dto.UserDataDto;
 import com.projetoIntegrador.projetoIntegrador.mapper.UserDataMapper;
 import com.projetoIntegrador.projetoIntegrador.services.UserServiceImp;
 import org.mapstruct.factory.Mappers;
@@ -30,15 +30,20 @@ public class UserController {
     }
 
     @PostMapping("/user")
-    public ResponseEntity<UserData> createUser(@RequestBody UserData userData) {
-        service.saveData(userData);
-        return new ResponseEntity<>(userData, HttpStatus.CREATED);
+    public ResponseEntity<UserDataDto> createUser(@RequestBody UserDataDto userDataDto) {
+        service.saveData(userDataDto);
+        return new ResponseEntity<>(userDataDto, HttpStatus.CREATED);
     }
 
     @GetMapping("/users")
-    public ResponseEntity<List<UserData>> getAllUsers() {
-        List<UserData> listUsers = service.getAllUsers();
+    public ResponseEntity<List<UserDataDto>> getAllUsers() {
+        List<UserDataDto> listUsers = service.getAllUsers();
         return ResponseEntity.ok().body(listUsers);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<UserDataDto> getUserById(@PathVariable Long id) {
+        return ResponseEntity.ok(service.getUserById(id));
     }
 }
 

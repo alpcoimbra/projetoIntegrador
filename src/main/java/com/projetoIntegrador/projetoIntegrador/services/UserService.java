@@ -1,6 +1,7 @@
 package com.projetoIntegrador.projetoIntegrador.services;
 
 import com.projetoIntegrador.projetoIntegrador.domain.UserData;
+import com.projetoIntegrador.projetoIntegrador.domain.dto.UserDataDto;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ public interface UserService {
 
     public String deleteData(Long id);
 
-    public void saveData(UserData user);
+    public void saveData(UserDataDto user);
 
-    List<UserData> getAllUsers();
+    List<UserDataDto> getAllUsers();
 }

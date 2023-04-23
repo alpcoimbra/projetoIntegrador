@@ -19,7 +19,7 @@ public interface UserDataMapper {
 //    @Mapping(target = "profissao", source = "userdataDto.profissao")
 //    @Mapping(target = "uf", source = "userdataDto.uf")
 //    @Mapping(target = "senha", source = "userdataDto.senha")
-//    UserData dtoToUserData(UserDataDto userDataDto);
+      UserData dtoToUserData(UserDataDto userDataDto);
 
 //    @Mapping(target = "nomeCompleto", source = "nomeCompleto")
 //    @Mapping(target = "areaFormacao", source = "areaFormacao")
@@ -31,7 +31,7 @@ public interface UserDataMapper {
 //    @Mapping(target = "senha", source = "senha")
     UserDataDto userDataToDto(UserData userData);
 
-    //List<UserData> listDtoToUserData(List<UserDataDto> userDataDtoList);
+    List<UserData> listDtoToUserData(List<UserDataDto> userDataDtoList);
 
     List<UserDataDto> listUserDataToDto(List<UserData> userDataList);
 }
