@@ -7,16 +7,15 @@ import com.projetoIntegrador.projetoIntegrador.services.UserServiceImp;
 import org.mapstruct.factory.Mappers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static org.hibernate.annotations.common.util.impl.LoggerFactory.logger;
-
 @RestController
-@RequestMapping(value = "/users")
+@RequestMapping(path = "/users")
 public class UserController {
 
     UserDataMapper INSTANCE = Mappers.getMapper(UserDataMapper.class);
@@ -25,22 +24,15 @@ public class UserController {
 
     private UserServiceImp service;
 
+    @Autowired
     public UserController(UserServiceImp service) {
         this.service = service;
     }
 
     @PostMapping("/user")
-    public ResponseEntity<UserData> saveNewUser(@RequestBody UserData userData) {
-
-        if (userData == null) {
-            throw new RuntimeException();
-        } else {
-            service.saveData(userData);
-        }
-
-        logger(UserData.class);
-
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    public ResponseEntity<UserData> createUser(@RequestBody UserData userData) {
+        service.saveData(userData);
+        return new ResponseEntity<>(userData, HttpStatus.CREATED);
     }
 
     @GetMapping("/users")
