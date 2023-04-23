@@ -10,6 +10,7 @@ import lombok.*;
 @Setter
 public class UserDataDto {
 
+    //private Long id;
     private String nomeCompleto;
     private String dataNascimento;
     private String cidade;
