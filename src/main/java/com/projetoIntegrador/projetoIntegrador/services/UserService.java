@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface UserService {
 
-    public UserData updateData(UserData newUser, String email);
+    public UserDataDto updateData(UserDataDto newUser, String email);
 
     public UserData getUserByUsername(String userEmail);
 

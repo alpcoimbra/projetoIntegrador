@@ -41,10 +41,10 @@ public class UserServiceImp implements UserService {
 
 
 
-    public UserData updateData(UserData newUser, String email){
+    public UserDataDto updateData(UserDataDto newUser, String email){
         UserData antigoUsuario = repository.findByEmail(email);
-        //copyToEntity(newUser, antigoUsuario);
-        return antigoUsuario;
+        copyToEntity(INSTANCE.dtoToUserData(newUser), antigoUsuario);
+        return INSTANCE.userDataToDto(antigoUsuario);
     }
 
     public UserDataDto getUserById(Long id) {
@@ -63,13 +63,13 @@ public class UserServiceImp implements UserService {
         return user;
     }
 
-//    private void copyToEntity(UserData newUser, UserData antigoUsuario) {
-//        antigoUsuario.setNomeCompleto(newUser.getNomeCompleto());
-//        antigoUsuario.setDataNascimento(newUser.getDataNascimento());
-//        antigoUsuario.setUf(newUser.getUf());
-//        antigoUsuario.setCidade(newUser.getCidade());
-//        antigoUsuario.setProfissao(newUser.getProfissao());
-//        antigoUsuario.setAreaFormacao(newUser.getAreaFormacao());
-//    }
+    private void copyToEntity(UserData newUser, UserData antigoUsuario) {
+        antigoUsuario.setNomeCompleto(newUser.getNomeCompleto());
+        antigoUsuario.setDataNascimento(newUser.getDataNascimento());
+        antigoUsuario.setUf(newUser.getUf());
+        antigoUsuario.setCidade(newUser.getCidade());
+        antigoUsuario.setProfissao(newUser.getProfissao());
+        antigoUsuario.setAreaFormacao(newUser.getAreaFormacao());
+    }
 
 }
